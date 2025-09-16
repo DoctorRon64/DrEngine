@@ -1,2 +1,9 @@
-#include "EntityManager.h"
+#include "InputManager.h"
 
+InputManager::InputManager() {
+
+}
+
+void InputManager::InputUpdate() {
+
+}

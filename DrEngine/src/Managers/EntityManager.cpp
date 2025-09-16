@@ -1,29 +1,21 @@
 #include "EntityManager.h"
-#include "ECS/Entity.h"
-#include <iostream>
-#include <cstdint>
+#include <memory>
 
-EntityManager::EntityManager(std::uint32_t newMaxEntities) {
-    maxEntities = newMaxEntities;
-    for (std::uint32_t i = 0; i < maxEntities; i++) {
-        availableEntities.push(i);
-    }
-    
+EntityManager::EntityManager(std::uint32_t newMaxEntities) : maxEntities(newMaxEntities) {
 }
 
-EntityManager::~EntityManager() {
-
-}
-
-std::uint32_t EntityManager::createEntity() {
+std::shared_ptr<Entity> EntityManager::createEntity() {
     if (availableEntities.empty()) {
-        return UINT32_MAX;
+        throw std::runtime_error("No more entity IDs available!");
     }
-    std::uint32_t id = availableEntities.front();
-    availableEntities.pop();
-    return id;
+
+    std::shared_ptr<Entity> entity = std::make_shared<Entity>();
+    availableEntities.push(entity); //TODO 
+
+    return entity;
 }
 
-void EntityManager::destroyEntity(std::uint32_t id){
-    availableEntities.push(id);
+void EntityManager::destroyEntity(std::shared_ptr<Entity> entity) {
+    availableEntities.pop(entity); //TODO
+    std::cout << "Entity Destroyed with id: " << entity->getId() << std::endl;
 }

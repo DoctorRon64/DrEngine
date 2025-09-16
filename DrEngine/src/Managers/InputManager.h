@@ -4,5 +4,8 @@ class InputManager{
     private:
     
     public:
+    InputManager();
+
+    void InputUpdate();
 
 };

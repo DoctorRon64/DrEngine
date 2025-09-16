@@ -81,6 +81,11 @@
         "span": "cpp",
         "text_encoding": "cpp",
         "thread": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "condition_variable": "cpp",
+        "map": "cpp",
+        "fstream": "cpp",
+        "mutex": "cpp",
+        "stop_token": "cpp"
     }
 }

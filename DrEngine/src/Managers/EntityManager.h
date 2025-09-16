@@ -1,16 +1,17 @@
 #pragma once
 #include <queue>
 #include <cstdint>
+#include <memory>
+#include "ECS/Entity.h"
 
 class EntityManager {
 private:
-    std::queue<std::uint32_t> availableEntities;
+    std::vector<std::shared_ptr<Entity>> availableEntities; //TODO
     std::uint32_t maxEntities;
-
 public:
-    EntityManager(std::uint32_t max = 5000);
-    ~EntityManager();
+    EntityManager(std::uint32_t newMaxEntities);
+    ~EntityManager() = default;
 
-    std::uint32_t createEntity();
-    void destroyEntity(std::uint32_t id);
+    std::shared_ptr<Entity> createEntity();
+    void destroyEntity(const std::shared_ptr<Entity> entity);
 };

@@ -1,35 +1,30 @@
 #include <string>
 #include <iostream>
 #include <SFML/Graphics.hpp>
+
 #include "Managers/EngineManager.h"
 #include "Managers/RenderManager.h"
 #include "Managers/EntityManager.h"
+#include "Managers/InputManager.h"
 
 int main() {
 	const std::string windowName = "DrEngine";
-	sf::Vector2u windowResolution (16 * 100, 9 * 100);
 	bool isGamePaused = false;
+	sf::Vector2u windowResolution (16 * 100, 9 * 100);
 
-	sf::RenderWindow EngineWindow;
-	EngineWindow.create(sf::VideoMode(windowResolution), windowName);
+	//Window
+	sf::RenderWindow* EngineWindow = new sf::RenderWindow(sf::VideoMode(windowResolution), windowName);
 
-	EngineManager manager;
-	RenderManager renderer;
-	EntityManager entityManager(20);
-	//InputManager
-
-	std::uint32_t player = entityManager.createEntity();
-	printf("%n\n", player);
-
-	entityManager.destroyEntity(player);
-	printf("%n\n", player);
+	//Managers
+	std::unique_ptr<EngineManager> manager = std::make_unique<EngineManager>();
+	std::unique_ptr<InputManager> inputManager = std::make_unique<InputManager>();
+	std::unique_ptr<RenderManager> renderManager = std::make_unique<RenderManager>();
 	
-
-	while (EngineWindow.isOpen()) {
+	while (EngineWindow->isOpen()) {
 		// ==================== Window Things =========================
-		while (const std::optional event = EngineWindow.pollEvent()) {
+		while (const std::optional event = EngineWindow->pollEvent()) {
 			if (event->is<sf::Event::Closed>()) {
-				EngineWindow.close();
+				EngineWindow->close();
 			}
 
 			if (event->is<sf::Event::FocusLost>())
@@ -48,14 +43,15 @@ int main() {
 		}
 
 		// ============== Game Loop ==================
-		//Process Input
-		manager.Update();
-		renderer.Render();
+		inputManager->InputUpdate();
+		manager->Update();
+		renderManager->Render();
 
-		EngineWindow.clear(sf::Color::Cyan);
-		EngineWindow.display();
+		EngineWindow->clear(sf::Color::Cyan);
+		EngineWindow->display();
 	}
 
-	EngineWindow.close();
+	EngineWindow->close();
+	delete(EngineWindow);
 	return 0;
 }

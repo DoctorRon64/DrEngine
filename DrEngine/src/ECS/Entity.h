@@ -3,17 +3,15 @@
 #include <iostream>
 
 class Entity {
-    public:
-        Entity() : id(nextId++) {
-            printf("New Entity Created with id: %u\n", id);
-        }
-        
-        std::uint32_t getId() const {
-            printf("The Entity id is: %u\n", id);
-            return id; 
-        }
+public:
+    explicit Entity(std::uint32_t newId) : id(newId) {
+        std::cout << "New Entity Created with id: " << id << std::endl;
+    }
 
-    private:
-        std::uint32_t id;
-        inline static std::uint32_t nextId = 0;
+    std::uint32_t getId() const {
+        return id;
+    }
+
+private:
+    std::uint32_t id;
 };
