@@ -1,16 +1,14 @@
 #include "EngineManager.h"
+#include "ECS/entity.h"
 #include <iostream>
 
-EngineManager::EngineManager(/* args */)
-{
-
+EngineManager::EngineManager() {
 }
 
-EngineManager::~EngineManager()
-{
+EngineManager::~EngineManager() {
 
 }
 
 void EngineManager::Update() {
-    printf("Holy fuck, lekkere vette oliebollen \n");
+
 }

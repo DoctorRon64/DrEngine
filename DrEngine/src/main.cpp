@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Managers/EngineManager.h"
 #include "Managers/RenderManager.h"
+#include "Managers/EntityManager.h"
 
 int main() {
 	const std::string windowName = "DrEngine";
@@ -14,7 +15,15 @@ int main() {
 
 	EngineManager manager;
 	RenderManager renderer;
+	EntityManager entityManager(20);
 	//InputManager
+
+	std::uint32_t player = entityManager.createEntity();
+	printf("%n\n", player);
+
+	entityManager.destroyEntity(player);
+	printf("%n\n", player);
+	
 
 	while (EngineWindow.isOpen()) {
 		// ==================== Window Things =========================
