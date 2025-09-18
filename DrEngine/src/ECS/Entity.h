@@ -4,7 +4,7 @@
 
 class Entity {
 public:
-    explicit Entity(std::uint32_t newId) : id(newId) {
+    Entity() : id(generateId()) {
         std::cout << "New Entity Created with id: " << id << std::endl;
     }
 
@@ -13,5 +13,10 @@ public:
     }
 
 private:
+    static std::uint32_t nextId; // Declaration only
     std::uint32_t id;
+
+    static std::uint32_t generateId() {
+        return nextId++;
+    }
 };
