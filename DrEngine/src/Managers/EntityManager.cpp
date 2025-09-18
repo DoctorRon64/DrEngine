@@ -3,7 +3,7 @@
 EntityManager::EntityManager(std::uint32_t newMaxEntities) : maxEntities() {
     //pre-allocate entity slots
     maxEntities = newMaxEntities;
-    availableEntities.reserve(maxEntities);
+    availableEntities.reserve(maxEntities); //how big is the array
 }
 
 std::shared_ptr<Entity> EntityManager::createEntity() {

@@ -9,3 +9,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE src)
 
 add_subdirectory(libs/SFML-3.0.1)
 target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics)
+
+add_subdirectory(libs/rapidXML)
+target_link_libraries(${PROJECT_NAME} PRIVATE rapidXML)

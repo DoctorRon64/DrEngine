@@ -43,7 +43,6 @@ int main() {
 		}
 
 		// ============== Game Loop ==================
-		inputManager->InputUpdate();
 		manager->Update();
 		renderManager->Render();
 
@@ -53,5 +52,7 @@ int main() {
 
 	EngineWindow->close();
 	delete(EngineWindow);
+	EngineWindow = nullptr;
+	
 	return 0;
 }

@@ -1,9 +1,13 @@
 #include "InputManager.h"
+#include <rapidxml.hpp>
+#include <rapidxml_iterators.hpp>
 
-InputManager::InputManager() {
+void InputManager::BindAction(const std::string& action, sf::Keyboard::Key key) {
+    keyBindings[key] = action;
 
+    
 }
 
-void InputManager::InputUpdate() {
+void InputManager::ProcessEvent(const sf::Event& event) {
 
 }

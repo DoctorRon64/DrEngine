@@ -1,0 +1,14 @@
+<Inputs>
+    <Action name="Jump">
+        <Keyboard key="Space" />
+        <Controller joystick="0" button="0" />
+    </Action>
+    <Action name="MoveLeft">
+        <Keyboard key="A" />
+        <Controller joystick="0" axis="LJoystick" />
+    </Action>
+    <Action name="Shoot">
+        <Keyboard key="LControl" />
+        <Controller joystick="0" button="1" />
+    </Action>
+</Inputs>

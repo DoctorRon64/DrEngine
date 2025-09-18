@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <memory>
 #include <algorithm>
+
 #include "ECS/Entity.h"
 
 class EntityManager {

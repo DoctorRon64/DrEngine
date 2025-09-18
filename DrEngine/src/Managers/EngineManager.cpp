@@ -3,7 +3,7 @@
 #include <iostream>
 
 EngineManager::EngineManager() {
-    entityManager = std::make_shared<EntityManager>(200);
+    entityManager = std::make_shared<EntityManager>(maxEntities);
 
     std::shared_ptr<Entity> player = entityManager->createEntity();
     std::shared_ptr<Entity> Enemy = entityManager->createEntity();
