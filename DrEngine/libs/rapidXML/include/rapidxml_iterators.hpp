@@ -96,7 +96,6 @@ namespace rapidxml
     {
     
     public:
-
         typedef typename xml_attribute<Ch> value_type;
         typedef typename xml_attribute<Ch> &reference;
         typedef typename xml_attribute<Ch> *pointer;

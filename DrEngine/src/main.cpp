@@ -4,7 +4,6 @@
 
 #include "Managers/EngineManager.h"
 #include "Managers/RenderManager.h"
-#include "Managers/EntityManager.h"
 #include "Managers/InputManager.h"
 
 int main() {
@@ -16,8 +15,8 @@ int main() {
 	sf::RenderWindow* EngineWindow = new sf::RenderWindow(sf::VideoMode(windowResolution), windowName);
 
 	//Managers
-	std::unique_ptr<EngineManager> manager = std::make_unique<EngineManager>();
 	std::unique_ptr<InputManager> inputManager = std::make_unique<InputManager>();
+	std::unique_ptr<EngineManager> manager = std::make_unique<EngineManager>();
 	std::unique_ptr<RenderManager> renderManager = std::make_unique<RenderManager>();
 	
 	while (EngineWindow->isOpen()) {

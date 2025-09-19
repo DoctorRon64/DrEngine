@@ -1,10 +1,14 @@
 #include "EngineManager.h"
-#include "ECS/entity.h"
-#include <iostream>
 
 EngineManager::EngineManager() {
-    entityManager = std::make_shared<EntityManager>(maxEntities);
+    assetManager = std::make_shared<AssetManager>();
 
+    assetManager->registerLoader<XmlLoader>("xml");
+    assetManager->registerLoader<SpriteLoader>("png");
+    assetManager->registerLoader<SpriteLoader>("jpg");
+
+    entityManager = std::make_shared<EntityManager>(maxEntities);
+    
     std::shared_ptr<Entity> player = entityManager->createEntity();
     std::shared_ptr<Entity> Enemy = entityManager->createEntity();
     std::shared_ptr<Entity> Villager = entityManager->createEntity();
