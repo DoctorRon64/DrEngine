@@ -1,10 +1,7 @@
 #include <string>
 #include <iostream>
 #include <SFML/Graphics.hpp>
-
-#include "Managers/EngineManager.h"
-#include "Managers/RenderManager.h"
-#include "Managers/InputManager.h"
+#include "Engine.h"
 
 int main() {
 	const std::string windowName = "DrEngine";
@@ -15,8 +12,7 @@ int main() {
 	sf::RenderWindow* EngineWindow = new sf::RenderWindow(sf::VideoMode(windowResolution), windowName);
 
 	//Managers
-	std::unique_ptr<InputManager> inputManager = std::make_unique<InputManager>();
-	std::unique_ptr<EngineManager> manager = std::make_unique<EngineManager>();
+	std::unique_ptr<Engine> engine = std::make_unique<Engine>();
 	std::unique_ptr<RenderManager> renderManager = std::make_unique<RenderManager>();
 	
 	while (EngineWindow->isOpen()) {
@@ -41,8 +37,7 @@ int main() {
 			}
 		}
 
-		// ============== Game Loop ==================
-		manager->Update();
+		engine->Update();
 		renderManager->Render();
 
 		EngineWindow->clear(sf::Color::Cyan);

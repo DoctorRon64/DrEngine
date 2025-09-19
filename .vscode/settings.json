@@ -87,6 +87,7 @@
         "fstream": "cpp",
         "mutex": "cpp",
         "stop_token": "cpp",
-        "typeindex": "cpp"
+        "typeindex": "cpp",
+        "queue": "cpp"
     }
 }

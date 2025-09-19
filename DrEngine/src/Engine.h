@@ -1,21 +1,22 @@
 #pragma once
-#include "EntityManager.h"
 #include "ECS/entity.h"
-#include "AssetManager.h"
 #include "Assets/XmlLoader.h"
 #include "Assets/SpriteLoader.h"
-
+#include "Managers/EntityManager.h"
+#include "Managers/AssetManager.h"
+#include "Managers/RenderManager.h"
+#include "Managers/InputManager.h"
+#include <rapidxml.hpp>
 #include <iostream>
 #include <memory>
 
-class EngineManager {
+class Engine {
     private:
         std::shared_ptr<EntityManager> entityManager;
         std::shared_ptr<AssetManager> assetManager;
-        int maxEntities = 200;
-
+	    std::shared_ptr<InputManager> inputManager;
     public:
-        EngineManager();
-        ~EngineManager();
+        Engine();
+        ~Engine();
         void Update();
 };
