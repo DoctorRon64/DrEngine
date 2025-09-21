@@ -11,9 +11,6 @@ Engine::Engine() {
     std::shared_ptr<rapidxml::xml_document<>> keyConfig = keyAsset->doc;
     inputManager = std::make_shared<InputManager>(keyConfig);
 
-
-
-
     entityManager = std::make_shared<EntityManager>(200);
     std::shared_ptr<Entity> player = entityManager->createEntity();
     std::shared_ptr<Entity> Enemy = entityManager->createEntity();

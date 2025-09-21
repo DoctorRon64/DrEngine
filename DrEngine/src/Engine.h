@@ -14,8 +14,8 @@ class Engine {
     private:
         std::shared_ptr<EntityManager> entityManager;
         std::shared_ptr<AssetManager> assetManager;
-	    std::shared_ptr<InputManager> inputManager;
     public:
+	    std::shared_ptr<InputManager> inputManager;
         Engine();
         ~Engine();
         void Update();

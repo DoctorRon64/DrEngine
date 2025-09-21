@@ -18,6 +18,11 @@ int main() {
 	while (EngineWindow->isOpen()) {
 		// ==================== Window Things =========================
 		while (const std::optional event = EngineWindow->pollEvent()) {
+			auto action = engine->inputManager->GetActionFromEvent(event);
+			if (!action.empty()) {
+				std::cout << "Action triggered: " << action << "\n";
+			}
+
 			if (event->is<sf::Event::Closed>()) {
 				EngineWindow->close();
 			}
